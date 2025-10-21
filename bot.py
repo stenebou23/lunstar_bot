@@ -7,7 +7,7 @@ from telebot.types import ReplyKeyboardMarkup, KeyboardButton
 
 
 # ---------------- CONFIG ----------------
-TOKEN = "8241297349:AAHrmit98ZyQwKsuSqQbwicIolBjsvS01Hw"  # 👈 вставь сюда токен из @BotFather
+TOKEN = "8241297349:AAHrmit98ZyQwKsuSqQbwicIolBjsvS01Hw"
 DATA_FILES = {
     "Экономика промышленности": "industry_economics.json",
     "Инновационная экономика": "innovation_economics.json",
