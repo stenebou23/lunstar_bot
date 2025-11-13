@@ -1,4 +1,4 @@
-# bot.py — LUNSTAR Bot 2.0 (исправленный, стиль: street)
+# bot.py — LUNSTAR Bot
 import telebot
 import json
 import random
