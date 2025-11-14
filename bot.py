@@ -7,7 +7,7 @@ from telebot.types import ReplyKeyboardMarkup, KeyboardButton
 
 
 # 
-
+TOKEN = "8241297349:AAHrmit98ZyQwKsuSqQbwicIolBjsvS01Hw"
 DATA_FILES = {
     "Экономика промышленности": "industry_economics.json",
     "Инновационная экономика": "innovation_economics.json",
@@ -229,4 +229,5 @@ def handle_answer(message):
 
 print("✅ Бот запущен и готов к работе 🔥")
 bot.infinity_polling()
+
 
