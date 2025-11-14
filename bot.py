@@ -1,4 +1,4 @@
-# bot.py — LUNSTAR Bot
+# LUNSTAR Bot
 import telebot
 import json
 import random
@@ -6,7 +6,7 @@ import os
 from telebot.types import ReplyKeyboardMarkup, KeyboardButton
 
 
-# ---------------- CONFIG ----------------
+# 
 TOKEN = "8241297349:AAHrmit98ZyQwKsuSqQbwicIolBjsvS01Hw"
 DATA_FILES = {
     "Экономика промышленности": "industry_economics.json",
@@ -21,7 +21,7 @@ bot = telebot.TeleBot(TOKEN)
 state = {}
 
 
-# 🗂️ Загружаем старые результаты (если есть)
+# 
 if os.path.exists(RESULTS_FILE):
     with open(RESULTS_FILE, "r", encoding="utf-8") as f:
         results_db = json.load(f)
@@ -39,7 +39,7 @@ def load_questions(file_name):
         return json.load(f)
 
 
-# 🎛 Главное меню
+# 
 def keyboard_main_menu():
     kb = ReplyKeyboardMarkup(resize_keyboard=True)
     kb.add("🎓 Обучение", "🧩 Тест")
@@ -47,7 +47,7 @@ def keyboard_main_menu():
     return kb
 
 
-# 📚 Меню предметов
+# 
 def keyboard_subjects():
     kb = ReplyKeyboardMarkup(resize_keyboard=True)
     for name in DATA_FILES.keys():
@@ -56,7 +56,7 @@ def keyboard_subjects():
     return kb
 
 
-# ➡️ Кнопки перехода
+# 
 def keyboard_next():
     kb = ReplyKeyboardMarkup(resize_keyboard=True)
     kb.add("➡️ Далее")
@@ -64,7 +64,7 @@ def keyboard_next():
     return kb
 
 
-# ----------------- БЛОК ОБРАБОТКИ -------------------
+# 
 
 
 @bot.message_handler(commands=["start", "help"])
@@ -123,7 +123,7 @@ def handle_subject(message):
         send_test(chat)
 
 
-# --------- 🎓 ОБУЧЕНИЕ ----------
+# 
 def send_learning(chat):
     s = state[chat]
     idx = s["index"]
@@ -140,7 +140,7 @@ def send_learning(chat):
     bot.send_message(chat, "➡️ Далее", reply_markup=keyboard_next())
 
 
-# --------- 🧩 ТЕСТ ----------
+# 
 def send_test(chat):
     s = state[chat]
     idx = s["index"]
@@ -175,7 +175,7 @@ def send_test(chat):
     bot.send_message(chat, text, reply_markup=kb)
 
 
-# --------- 💬 ОТВЕТЫ ----------
+# 
 @bot.message_handler(func=lambda m: True)
 def handle_answer(message):
     chat = message.chat.id
@@ -193,7 +193,7 @@ def handle_answer(message):
     s = state[chat]
 
 
-    # 🎓 Обучение
+    # 
     if s["mode"] == "learn":
         if message.text == "➡️ Далее":
             send_learning(chat)
@@ -204,7 +204,7 @@ def handle_answer(message):
             bot.send_message(chat, "Нажми '➡️ Далее' или '⏹️ Выход'")
 
 
-    # 🧩 Тест
+    # 
     elif s["mode"] == "test":
         text = message.text.strip().upper()
         if text not in ["A", "B", "C", "D"]:
