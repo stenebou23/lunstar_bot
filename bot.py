@@ -71,7 +71,7 @@ def keyboard_next():
 def handle_start(message):
     bot.send_message(
         message.chat.id,
-        "🔥 Это LUNSTAR BOT!\n\n🎓 Учись, тестируйся! \n\nВыбирай режим 👇",
+        "🔥🎓 Учись, тестируйся! \n\nВыбирай режим 👇",
         reply_markup=keyboard_main_menu()
     )
 
@@ -229,5 +229,6 @@ def handle_answer(message):
 
 print("✅ Бот запущен и готов к работе 🔥")
 bot.infinity_polling()
+
 
 
